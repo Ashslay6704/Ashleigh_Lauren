@@ -215,7 +215,7 @@ AIC_simple - AIC_full
 
 Q5: Is there a preferred model and if so, which one?
 
->*Answer 5:* There is a preferred model - model 2. This is because it has a lower AIC value.
+>*Answer 5:* There is a preferred model - model 2. This is because it has a lower AIC value and the difference in their AIC values is larger than 3 meaning that model 2 is significantly better than model 1.
 
 <br>
 
