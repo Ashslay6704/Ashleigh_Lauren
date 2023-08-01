@@ -1,11 +1,4 @@
 ---
-title: "04_Master.Rmd"
-author: "Lauren"
-date: "2023-08-01"
-output: html_document
----
-
----
 title: "Master script for postfire analysis"
 output: html_document
 ---
@@ -40,7 +33,7 @@ plot.NDVI(dat)
 Q1: This plot suggests that Fynbos greenness (NDVI) as observed from satellite saturates with time since fire. Why do you think it saturates rather than increasing linearly with time?
 
 >*Answer 1:*
-
+after the fire, the vegetation grows rapidly as there is open space for seedlings to germinate and grow. However, it saturates over time because as the vegetation covers all of the space of one pixel. Even if there is more growth, it can only be vertical so the greenness measure cannot pick up that growth since the greenness remains the same. 
 <br>
 
 ### 2. Fit models using Non-linear Least Squares (NLS)
@@ -107,7 +100,8 @@ Lots more parameters...
 Q2: How do the estimates for the common parameters compare?
 
 >*Answer 2:*
-
+alpha and gamma are slightly lower from the first to the second model but lambda increases from the first to the second 
+model.
 <br>
 
 ### 3. Compare NLS models using ANOVA
@@ -125,11 +119,11 @@ anova(fit_negexp, fit_negexpS)
 Q3: Which model is better?
 
 >*Answer 3:*
-
+Model 2 is better since model 2 has a more minimised sum of squared residuals compared to model 1. This could be due to model 2 accounting for seasonality so it is a better fit to the data.
 Q4: How many degrees of freedom are there in this ANOVA and why (i.e. what are they)?
 
 >*Answer 4:*
-
+2 because there are 2 more parameters in model 2 than in model 1 which are A and phi.
 <br>
 
 ### 4. Fit models using Maximum Likelihood Estimation (MLE)
@@ -221,7 +215,7 @@ AIC_simple - AIC_full
 
 Q5: Is there a preferred model and if so, which one?
 
->*Answer 5:*
+>*Answer 5:* There is a preferred model - model 2. This is because it has a lower AIC value.
 
 <br>
 
@@ -239,6 +233,6 @@ You'll notice that these are completely different to the AICs for the MLE models
 
 Q6: Why is it not okay to compare the AIC of these NLS models with the AIC of the MLE models? Hint: type `?AIC` into the R console and do some reading.
 
->*Answer 6:*
+>*Answer 6:*This is because a model which is inherently better/ is the better pick in reality can have the lowest AIC value as the likelihoods of the models have not been maximised. 
 
 <br>
